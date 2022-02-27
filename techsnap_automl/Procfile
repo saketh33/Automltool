@@ -1,0 +1,1 @@
+web: gunicorn techsnap_automl.wsgi --log-file -
