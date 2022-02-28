@@ -26,11 +26,11 @@
                 <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Upload Excel File</label>
+                        <label for="formFile" class="form-label">Upload Dataset</label>
                         <input class="form-control" type="file" name="excel_file" id="formFile" required>
                     </div>
                     <div class="mb-3">
-                        <label for="yaxis" class="form-label">Enter Y-axis</label>
+                        <label for="yaxis" class="form-label">Enter "to be predicted" column (y value)</label>
                         <input type="text" name="yaxis" class="form-control" id="yaxis">
                     </div>
                     <div class="mb-3">
@@ -45,17 +45,17 @@
             </div>
             <div class="col-lg-6 result mt-5">
                 <h3 class="text-center">Result</h3>
-                <p>Y-axis : {{yaxis}}</p>
-                <p>X-axis : </p>
+                <p>Y_columns : {{yaxis}}</p>
+                <p>X_columns : </p>
                 <ul>
                     {% for i in xaxis %}
                         <li>{{i}}</li>
                     {% endfor %}
                 </ul>
-                <p> X-train : {{xtrain}} </p>
-                <p> X-test : {{xtest}} </p>
-                <p> Y-train : {{ytrain}} </p>
-                <p> Y-test : {{ytest}}</p>
+                <p> X_train : {{xtrain}} </p>
+                <p> X_test : {{xtest}} </p>
+                <p> y_train : {{ytrain}} </p>
+                <p> y_test : {{ytest}}</p>
             </div>
         </div>
     </div>
