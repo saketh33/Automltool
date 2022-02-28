@@ -9,7 +9,7 @@ def home(request):
         return render(request, 'index.html', {})
     else:
         x_axis=[]
-        excel_file = request.FILES["excel_file"]
+        excel_file = request.FILES["excel_file","file"]
         y_axis = request.POST.get("yaxis")
         testsize = request.POST.get("test_size")
         data=pd.read_excel(excel_file)
