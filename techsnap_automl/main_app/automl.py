@@ -172,3 +172,27 @@ gradr= GradientBoostingRegressor(random_state=0)
 xgbr= xg.XGBRegressor(objective ='reg:linear',n_estimators = 10, seed = 123)
 
 Adar.score
+
+
+from sklearn.ensemble.weight_boosting import AdaBoostClassifier
+from sklearn.ensemble.gradient_boosting import GradientBoostingClassifier
+from sklearn.ensemble.bagging import BaggingClassifier
+from sklearn.ensemble.forest import ExtraTreesClassifier
+from sklearn.ensemble.forest import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors.classification import RadiusNeighborsClassifier
+from sklearn.neighbors.classification import KNeighborsClassifier
+
+
+from sklearn.metrics import f1_score
+from sklearn.metrics import fbeta_score
+from sklearn.metrics import log_loss 
+log_loss(y_true, y_pred, eps=1e-15)
+from sklearn.metrics import roc_auc_score
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import recall_score
+recall_score(y_true, y_pred, average='macro')
+recall_score(y_true, y_pred, average='micro')
+recall_score(y_true, y_pred, average='weighted')
+ 
