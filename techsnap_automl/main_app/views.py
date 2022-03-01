@@ -115,7 +115,7 @@ def xtest(request):
         y=df[y_axis]
         X_train,X_test,y_train,y_test = train_test_split(X, y, test_size=testsize, random_state=20)
         showbuttons=True
-        return render(request,'index.html',{"xtest":X_test,'showbuttons':showbuttons})
+        return render(request,'index.html',{"xtest":X_test.size,'showbuttons':showbuttons})
 
 
 def ytest(request):
@@ -128,7 +128,7 @@ def ytest(request):
         y=df[y_axis]
         X_train,X_test,y_train,y_test = train_test_split(X, y, test_size=testsize, random_state=20)
         showbuttons=True
-        return render(request,'index.html',{"ytest":y_test,'showbuttons':showbuttons})
+        return render(request,'index.html',{"ytest":y_test.size,'showbuttons':showbuttons})
 
 def xtrain(request):
     if 'df' in request.session and 'y-axis' in request.session:
@@ -140,7 +140,7 @@ def xtrain(request):
         y=df[y_axis]
         X_train,X_test,y_train,y_test = train_test_split(X, y, test_size=testsize, random_state=20)
         showbuttons=True
-        return render(request,'index.html',{"xtrain":X_train,'showbuttons':showbuttons})
+        return render(request,'index.html',{"xtrain":X_train.size,'showbuttons':showbuttons})
 
 
 def ytrain(request):
@@ -153,7 +153,7 @@ def ytrain(request):
         y=df[y_axis]
         X_train,X_test,y_train,y_test = train_test_split(X, y, test_size=testsize, random_state=20)
         showbuttons=True
-        return render(request,'index.html',{"ytrain":y_train,'showbuttons':showbuttons})
+        return render(request,'index.html',{"ytrain":y_train.size,'showbuttons':showbuttons})
 
 def skip(request):
     skip=True
@@ -200,7 +200,6 @@ def algoTrain(request):
             logistic=LogisticRegression()
             logistic.fit(X_train,y_train)
             pred=logistic.predict(X_test)  
-        print(type(pred))
         messages.success(request,"Successfully Trained!")
         return render(request,'index.html',{'skip':skip,'predictval':predictval})
 
