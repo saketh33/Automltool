@@ -177,14 +177,38 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form class="mt-5" action="" method="post" enctype="multipart/form-data">
+                    <form class="mt-5" action="{% url 'skip' %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input type="submit" class="btn btn-danger" value="Skip">
-    
+                        <input type="submit" class="btn btn-danger" value="Skip to Algorithm Implementation">
                     </form>
                 </div>
+                {% elif skip %}
+                <form class="mt-5" action="{% url 'algoTrain' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="custom-select">Select Algorithm Type to Implement</label>
+                    <select class="custom-select" name="algoval" 
+                            style="width:250px;font-size:18px;height:38px;">
+                        <option value="linear">linear</option>
+                        <option value="decision">decision</option>
+                        <option value="Random">Random</option>
+                        <option value="logistic">logistic</option>
+                        <option value="svm">svm</option>
+                        <option value="knn">knn</option>
+                        <option value="ridge">ridge</option>
+                    </select>
+                    <input type="submit" class="btn btn-primary" name="train" value="Train">
+                    <input type="submit" class="btn btn-primary" value="Predict" name="predict" >
+                </form>
+                {% elif checkMetrics %}
+                <form class="mt-5" action="{% url 'checkMetrics' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-primary mb-2" name="mse" value="Mean Squared Error">
+                    <input type="submit" class="btn btn-primary mb-2" name="rmse" value="Root Mean Squared Error" >
+                    <input type="submit" class="btn btn-primary mb-2" name="mae" value="Mean Absolute Error">
+                    <input type="submit" class="btn btn-primary mb-2" name="r2score" value="R2 Score">                    
+                </form>
                 {% endif %}
-        
+                
                 <p></p>
                 <hr>
             </div>
@@ -200,6 +224,15 @@
                 <p> {{xtest}} </p>
                 <p> {{ytrain}} </p>
                 <p> {{ytest}}</p>
+                <ul>
+                    {% for i in predictval %}
+                        <li>{{i}}</li>
+                    {% endfor %}
+                </ul>
+                <p>{{mse}}</p>
+                <p>{{rmse}}</p>
+                <p>{{mae}}</p>
+                <p>{{r2score}}</p>
             </div>
         </div>
     </div>

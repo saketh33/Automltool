@@ -13,4 +13,7 @@ urlpatterns = [
     path('xtrain/',views.xtrain,name="xtrain"),
     path('ytest/',views.ytest,name="ytest"),
     path('ytrain/',views.ytrain,name="ytrain"),    
+    path('skip/',views.skip,name="skip"),    
+    path('trainalgo/',views.algoTrain,name="algoTrain"),
+    path('checkmetrics/',views.checkMetrics,name="checkMetrics"),
 ]
