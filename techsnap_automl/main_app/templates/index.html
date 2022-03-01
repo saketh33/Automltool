@@ -93,7 +93,7 @@
                 <form class="mt-5" action="{% url 'uploadfile' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Upload File</label>
+                        <label for="formFile" class="form-label">Upload Dataset</label>
                         <input class="form-control" type="file" name="upload_file" id="formFile" required>
                     </div>
                     <input type="submit" class="btn btn-primary" value="Upload">
@@ -114,7 +114,7 @@
                 <form class="mt-5" action="{% url 'regression' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label for="yaxis" class="form-label">Select Y-axis</label>
+                        <label for="yaxis" class="form-label">Enter "to be predicted" column (y value)</label>
                         <select class="custom-select" name="yaxis" 
                             style="width:250px;font-size:18px;height:38px;">
                         {% for col in columns %}
