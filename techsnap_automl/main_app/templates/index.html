@@ -109,9 +109,9 @@
                     </select>
                     <input type="submit" class="btn btn-primary" value="Submit">
                 </form>
-                {% elif regression %}
-                <h2>Selected : Regression </h2>
-                <form class="mt-5" action="{% url 'regression' %}" method="post" enctype="multipart/form-data">
+                {% elif probType %}
+                <h2>Selected : {{probType}} </h2>
+                <form class="mt-5" action="{% url 'typeInputs' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="yaxis" class="form-label">Enter "to be predicted" column (y value)</label>
@@ -182,8 +182,8 @@
                         <input type="submit" class="btn btn-danger" value="Skip to Algorithm Implementation">
                     </form>
                 </div>
-                {% elif skip %}
-                <form class="mt-5" action="{% url 'algoTrain' %}" method="post" enctype="multipart/form-data">
+                {% elif Regression %}
+                <form class="mt-5" action="{% url 'algoTrain1' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <label for="custom-select">Select Algorithm Type to Implement</label>
                     <select class="custom-select" name="algoval" 
@@ -191,7 +191,6 @@
                         <option value="linear">linear</option>
                         <option value="decision">decision</option>
                         <option value="Random">Random</option>
-                        <option value="logistic">logistic</option>
                         <option value="svm">svm</option>
                         <option value="knn">knn</option>
                         <option value="ridge">ridge</option>
@@ -199,13 +198,43 @@
                     <input type="submit" class="btn btn-primary" name="train" value="Train">
                     <input type="submit" class="btn btn-primary" value="Predict" name="predict" >
                 </form>
-                {% elif checkMetrics %}
-                <form class="mt-5" action="{% url 'checkMetrics' %}" method="post" enctype="multipart/form-data">
+                {% elif Classification %}
+                <form class="mt-5" action="{% url 'algoTrain2' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="custom-select">Select Algorithm Type to Implement</label>
+                    <select class="custom-select" name="algoval" 
+                            style="width:250px;font-size:18px;height:38px;">
+                        <!-- <option value="AdaBoostClassifier">AdaBoostClassifier</option>
+                        <option value="GradientBoostingClassifier">GradientBoostingClassifier</option>
+                        <option value="BaggingClassifier">BaggingClassifier</option>
+                        <option value="ExtraTreesClassifier">ExtraTreesClassifier</option>-->
+                        <option value="RandomForestClassifier">RandomForestClassifier</option> 
+                        <option value="DecisionTreeClassifier">DecisionTreeClassifier</option>
+                        <!-- <option value="KNeighborsClassifier">KNeighborsClassifier</option> -->
+                        <option value="Logistics">Logistics</option>
+                    </select>
+                    <input type="submit" class="btn btn-primary" name="train" value="Train">
+                    <input type="submit" class="btn btn-primary" value="Predict" name="predict" >
+                </form>
+
+                {% elif checkMetrics1 %}
+                <form class="mt-5" action="{% url 'checkMetrics1' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <input type="submit" class="btn btn-primary mb-2" name="mse" value="Mean Squared Error">
                     <input type="submit" class="btn btn-primary mb-2" name="rmse" value="Root Mean Squared Error" >
                     <input type="submit" class="btn btn-primary mb-2" name="mae" value="Mean Absolute Error">
                     <input type="submit" class="btn btn-primary mb-2" name="r2score" value="R2 Score">                    
+                </form>
+                {% elif checkMetrics2 %}
+                <form class="mt-5" action="{% url 'checkMetrics2' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-primary mb-2" name="F1 Score" value="F1 Score">
+                    <input type="submit" class="btn btn-primary mb-2" name="F BetaScore" value="F BetaScore" >
+                    <input type="submit" class="btn btn-primary mb-2" name="Log loss" value="Log loss">
+                    <input type="submit" class="btn btn-primary mb-2" name="Recall Score" value="Recall Score">                    
+                    <input type="submit" class="btn btn-primary mb-2" name="Accuracy Score" value="Accuracy Score" >
+                    <input type="submit" class="btn btn-primary mb-2" name="Confusion Matrix" value="Confusion Matrix">
+                    <input type="submit" class="btn btn-primary mb-2" name="ROC AUC Score" value="ROC AUC Score">      
                 </form>
                 {% endif %}
                 
